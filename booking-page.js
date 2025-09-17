@@ -2206,10 +2206,8 @@ function dataExtraction(){
 
       if (userFormData){
         const serviceBasedContainer = document.querySelector('.service-based-container-on');
-        
-                  if (langButton.innerText == 'ع'){
 
-      
+
       const message = 
       `      ${userFormData.ServiceType} for ${userFormData.userName} 
       Client Name: ${userFormData.userName}
@@ -2242,46 +2240,12 @@ function dataExtraction(){
         }
       })
       .catch(error => console.log('Error: ' + error));
-    }else if (langButton.innerText == 'EN'){
 
-            const message = 
-      `      ${userFormData.serviceType} ل${userFormData.personalName} 
-      إسم العميل: ${userFormData.personalName}
-      رقم الهاتف: ${userFormData.phoneNumber}
-      الخدمة المطلوبة: ${userFormData.serviceType}
-      الوقت المطلوب:  ${userFormData.bookingDate} على ${userFormData.bookingTime}
-      
-          
-  باشر بالتواصل و المتابعة مع العميل فوراَ لضمان نسبة نجاح أعلى! ولو برسالة تأكيد الحجز.
-
-      
-      `;
-      const url = 'https://script.google.com/macros/s/AKfycbwVnT6fixru_RiQdoTrH_sXAJEumlBGhlMWNCSwD_3AsKPFxE7krNvPM9pNFeES0rrl/exec'; // Replace with your deployed Apps Script URL
-
-      fetch(url, {
-        method: 'POST',
-        contentType: 'application/json',
-        body: JSON.stringify({ message: message })
-      })
-      .then(response => response.json())
-      .then(data => {
-        if(data.status === 'success') {
-          console.log('Email sent successfully!');
-                sendMessage();
-        } else {
-          console.log('Error: ' + data.message);
-        }
-      })
-      .catch(error => console.log('Error: ' + error));
-    }
-        
-
-
-  
-  
   
   }};
-      
+  if (!userFormData.userName == "" && !userFormData.userNumber == ""){
+    sendMessage();
+  };
 
 };
 
@@ -2290,6 +2254,7 @@ function dataExtraction(){
 
 function saveUserData(){
   localStorage.setItem('userData' , JSON.stringify(userFormData));
+  sendMessage();
   
 };
 
@@ -2684,7 +2649,6 @@ alert('Kindly, enter the required information first.');}else if (langButton.inne
     event.preventDefault(); // Prevents navigation to the thank you page
   }else {
     window.location.href="the-thank-you-page.html"; 
-    sendMessage();
   }
 
 });
@@ -2792,5 +2756,14 @@ currentLanguage();
 
 
     
+
+
+
+
+
+
+
+    
+
 
 
