@@ -532,7 +532,7 @@ function startCountdownArabic() {
     const diff = targetDate - now;
 
     if (diff <= 0) {
-      countdownElement.innerText = '۰۰ : ۰۰ : ۰۰ : ۰۰';
+      countdownElement.innerHTML = '۰۰ : ۰۰ : ۰۰ : ۰۰';
       clearInterval(timerId);
       return;
     }
@@ -550,7 +550,7 @@ function startCountdownArabic() {
     const langButton = document.querySelector('.language');
 
     if (langButton.innerText == 'EN'){
-    countdownElement.innerText = `${ss} : ${mm} : ${hh} : ${dd}`;}else {
+    countdownElement.innerHTML = `${ss} : ${mm} : ${hh} : ${dd}`;}else {
         return
     }
   };
@@ -572,7 +572,7 @@ function startCountdownEnglish() {
     const diff = targetDate - now;
 
     if (diff <= 0) {
-      countdownElement.innerText = '00 : 00 : 00 : 00';
+      countdownElement.innerHTML = '00 : 00 : 00 : 00';
       clearInterval(timerId);
       return;
     }
@@ -589,7 +589,7 @@ function startCountdownEnglish() {
     const ss = String(seconds).padStart(2, '0');
     const langButton = document.querySelector('.language');
     if (langButton.innerText == 'ع'){
-    countdownElement.innerText = `${dd} : ${hh} : ${mm} : ${ss}`;}else {
+    countdownElement.innerHTML = `${dd} : ${hh} : ${mm} : ${ss}`;}else {
         return
     }
 };
@@ -1349,5 +1349,4 @@ function switchLanguage(){
 
 
 </script>
-
 
