@@ -373,10 +373,10 @@ p{
 
 .currency::before{
     content: "";
-    width: 5vw;
-    height: 4.2vw;
+    width: clamp(0px , 5vw , 25.35px);
+    height: clamp(0px , 4.2vw , 21.294px);
     background-color: rgba(0, 0, 0, 1);
-    filter: blur(0.5vw);
+    filter: blur(clamp(0px, 0.5vw , 2.535px));
     position: absolute;
     z-index: -1;
 }
@@ -417,3 +417,4 @@ white-space: nowrap;
 .black-cta-modified:hover {
 transform: scale(1.2);
 }
+
