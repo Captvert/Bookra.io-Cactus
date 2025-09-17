@@ -1001,7 +1001,7 @@ justify-content: center;
 
 .banner-item-image2{
     width: 5vw;
-    max-width: 25.35 pixels;
+    max-width: 25.35px;
 }
 
 .banner-item-image3{
@@ -1749,4 +1749,5 @@ p.gallery-category-active{
 .step1-text , .step2-text , .step3-text{
     display: flex;
     flex-direction: column;
+
 }
