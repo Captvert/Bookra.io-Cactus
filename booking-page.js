@@ -2267,6 +2267,7 @@ function dataExtraction(){
       .then(data => {
         if(data.status === 'success') {
           console.log('Email sent successfully!');
+                sendMessage();
         } else {
           console.log('Error: ' + data.message);
         }
@@ -2280,7 +2281,7 @@ function dataExtraction(){
   
   
   }};
-      sendMessage();
+      
 
 };
 
@@ -2791,4 +2792,5 @@ currentLanguage();
 
 
     
+
 
