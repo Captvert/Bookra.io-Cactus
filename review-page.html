@@ -695,7 +695,51 @@ startCountdownEnglish();
 
         serviceElements.PNC.innerHTML = `<div class="package-name-and-countdown"><div class="package-name-and-icon">Starter Package</div> <p class="countdown countdown-en">Price Depends</p>  </div>`;
 
-    } 
+    }else if(serviceNO == 3){
+        
+        serviceElements.ST.style.backgroundImage = 'url(ImagesFolder/Service-card2-thumbnail.png)'
+
+
+        serviceElements.SINA.style.paddingLeft = '0%';
+        serviceElements.SINA.style.paddingRight = '5%';
+
+        serviceElements.SINA.innerHTML = `<div class="service-icon" style = "background-image: url(ImagesFolder/discovery-visit-icon.png)"></div> Discovery Visit`;
+        serviceElements.PNI.innerHTML = `<div class="package-name-and-icon"> Starter Package </div>`;
+        serviceElements.CrossedPrice.innerText = ``;
+        serviceElements.CurrentPrice.innerText =  ``;
+
+        serviceElements.PF1.innerHTML = `<div class="bulletpoint bulletpoint-en"></div> Arrange a discovery visit to enter the chalet and get a look with a guide before booking.`;
+        serviceElements.PF2.innerHTML = ` <div class="bulletpoint bulletpoint-en"></div> High Quality Accomidation Services.`;
+        serviceElements.PF3.innerHTML =  `<div class="bulletpoint bulletpoint-en"></div> Ground Floor:`
+        
+        serviceElements.SF1.innerHTML = `<li>-Large Living Room.</li> <li>-Master bedroom with swimming pool view.</li><li>-Diwaniah with outdoor intrance.</li> <li>-Fully prepared kitchen</li>`
+        
+        serviceElements.PF4.innerHTML =  `<div class="bulletpoint bulletpoint-en"></div> First Floor:`;
+        serviceElements.SF2.innerHTML = `<li>-Full living room with balcony.</li> <li>-6 bedrooms ALL MASTER (Each 2 in separate side).</li>`
+        
+        serviceElements.PF5.innerHTML =  `<div class="bulletpoint bulletpoint-en"></div> Second Floor: `;
+        serviceElements.SF3.innerHTML = `<li>-Maid Bedroom (Master).</li>`;
+
+        serviceElements.PF7.innerHTML =  `<div class="bulletpoint bulletpoint-en"></div> Additional Features:`
+        serviceElements.SF4.innerHTML = ` <li>-Swimming Pool 9 X 5 with heating system.</li> <li>-Outdoor seating with sea view.</li> <li>-Children games.</li> <li>-Baby Foot(game) in living room.</li><li>-Air Hockey.</li> <li>-Large Dinning Table.</li> <li>-Functional Elevator.</li><li>-Tanning Chairs.</li> <li>-Swimming pool windows can be shut to make it private.</li>`;
+
+        serviceElements.PNC.innerHTML = `<div class="package-name-and-icon"> Starter Package </div>  <p class = "package-description">--</p>`;
+        }
+
+        serviceElements.PCN.innerText = ' *Payment & Confirmation after our call.';
+
+        serviceElements.RCTA.innerText = 'Continue To Booking';
+        serviceElements.RCTA.style.fontFamily = 'Inter';
+
+
+        language = 'English';
+        console.log('Switched Language to English');
+
+        localStorage.setItem('previousLanguage', JSON.stringify(language));
+
+
+
+        console.log('English is the current language');
 
 function currentLanguage(){
 
@@ -1299,3 +1343,4 @@ function switchLanguage(){
 
 
 </script>
+
