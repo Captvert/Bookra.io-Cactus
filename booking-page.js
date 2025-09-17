@@ -2209,7 +2209,7 @@ function dataExtraction(){
         
                   if (langButton.innerText == 'ع'){
 
-      alert('we reached here Boss 2')
+      
       const message = 
       `      ${userFormData.ServiceType} for ${userFormData.userName} 
       Client Name: ${userFormData.userName}
@@ -2791,3 +2791,4 @@ currentLanguage();
 
 
     
+
