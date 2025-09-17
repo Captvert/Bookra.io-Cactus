@@ -727,3 +727,68 @@ footerDescriptionA.innerHTML = 'I invite you to join me on my social media journ
 
 
 
+      function sendMessage() {
+        const langButton = document.querySelector('.language');
+
+
+      if (userInputtedData){
+        const serviceBasedContainer = document.querySelector('.service-based-container-on');
+
+
+      const message = 
+      `      ${userInputtedData.ServiceType} for ${userInputtedData.userName} 
+      Client Name: ${userInputtedData.userName}
+      Client Phone Number:${userInputtedData.userNumber}
+      Service Name:${userInputtedData.serviceType}
+      Amount of Visitors: ${userInputtedData.numberOfPeople}
+      Family Check: ${userInputtedData.FMAnswer}
+      Number of Nights: ${userInputtedData.numberOfNights}
+      Date & Time: ${userInputtedData.inputtedDate} At ${userInputtedData.inputtedTime}
+      
+      
+    FRom TY : SUCCESS TIP: Follow up with your client as soon as booking notification arrives to increase success rate! 
+
+      Even if it is just a booking confirmation message to solidify the deal.
+
+      We wish you success!
+      
+      `;
+      const url = 'https://script.google.com/macros/s/AKfycbwVnT6fixru_RiQdoTrH_sXAJEumlBGhlMWNCSwD_3AsKPFxE7krNvPM9pNFeES0rrl/exec'; // Replace with your deployed Apps Script URL
+
+      fetch(url, {
+        method: 'POST',
+        contentType: 'application/json',
+        body: JSON.stringify({ message: message })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if(data.status === 'success') {
+        } else {
+        }
+      })
+      .catch(error => console.log('Error: ' + error));
+
+  
+  }};
+  if (!userInputtedData.userName == "" && !userInputtedData.userNumber == ""){
+    sendMessage();
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
