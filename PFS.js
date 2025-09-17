@@ -42,7 +42,7 @@ toggleUnderline.style.marginLeft = `${xCoordinate - (containerXCoordinates)}px`;
 toggleUnderline.style.width = width;
 
 
-
+alert(document.querySelector('.language').innerText)
 
 function countDownLanguage(){
 if (document.querySelector('.language').innerText == 'ع'){
@@ -62,7 +62,7 @@ function updateCountdown() {
 
   if (diff <= 0) {
     // If the countdown is finished
-    countdownElement.innerText = '00 : 00 : 00 : 00';
+    countdownElement.innerHTML = '00 : 00 : 00 : 00';
     return;
   }
 
@@ -84,7 +84,7 @@ function updateCountdown() {
 
   const countdownEN = document.querySelector('.countdown-en');
   // Update the countdown display
-  countdownEN.innerText = `${dd} : ${hh} : ${mm} : ${ss}`;
+  countdownEN.innerHTML = `${dd} : ${hh} : ${mm} : ${ss}`;
 }
 
 // Initial call to display the countdown immediately
@@ -110,7 +110,7 @@ function updateCountdown() {
 
   if (diff <= 0) {
     // If the countdown is finished
-    countdownElement.innerText = '۰۰ : ۰۰ : ۰۰ : ۰۰'; // Arabic numerals for zero
+    countdownElement.innerHTML = '۰۰ : ۰۰ : ۰۰ : ۰۰'; // Arabic numerals for zero
     clearInterval(timer);
     return;
   }
@@ -137,7 +137,7 @@ function updateCountdown() {
 
   const countdownA = document.querySelector('.countdown-ar');
   // Update the countdown display
-  countdownA.innerText = `${ss} : ${mm} : ${hh} : ${dd}`;
+  countdownA.innerHTML = `${ss} : ${mm} : ${hh} : ${dd}`;
 }
 
     // Initial call to display the countdown immediately
@@ -2355,6 +2355,7 @@ function someConditionIsTrue() {
 // Example usage (assuming someVariable is a global variable)
 let oldValue = 0;
 let someVariable = 1;
+
 
 
 
