@@ -984,7 +984,7 @@ justify-content: center;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    font-size: clamp(0px, 2vw, 16.507px);
+    font-size: clamp(0px, 2vw, 10.16px);
     font-weight: bold;
     white-space: nowrap;
     height: 15vw;
@@ -1751,3 +1751,4 @@ p.gallery-category-active{
     flex-direction: column;
 
 }
+
