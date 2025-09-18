@@ -2211,8 +2211,8 @@ function dataExtraction(){
       const message = 
       `      ${userFormData.ServiceType} for ${userFormData.userName} 
       Client Name: ${userFormData.userName}
-      Client Phone Number:${userFormData.userNumber}
-      Service Name:${userFormData.serviceType}
+      Client Phone Number: ${userFormData.userNumber}
+      Service Name: ${userFormData.ServiceType}
       Amount of Visitors: ${userFormData.numberOfPeople}
       Family Check: ${userFormData.FMAnswer}
       Number of Nights: ${userFormData.numberOfNights}
@@ -2224,7 +2224,9 @@ function dataExtraction(){
       Even if it is just a booking confirmation message to solidify the deal.
 
       We wish you success!
-      
+
+
+            #First Copy#
       `;
       const url = 'https://script.google.com/macros/s/AKfycbwVnT6fixru_RiQdoTrH_sXAJEumlBGhlMWNCSwD_3AsKPFxE7krNvPM9pNFeES0rrl/exec'; // Replace with your deployed Apps Script URL
 
@@ -2764,6 +2766,7 @@ currentLanguage();
 
 
     
+
 
 
 
