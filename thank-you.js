@@ -367,7 +367,7 @@ const emailMessageA = document.querySelector('.email-message');
 emailMessageA.innerHTML = `a ${userInputtedData.ServiceType} for ${userInputtedData.userName}, tap to view full information.`;
 
 const lockScreenTime = document.querySelector('.lock-screen-time-large');
-lockScreenTime.innerText = getTime();
+lockScreenTime.innerHTML = getTime();
 
 const lockScreenDate = document.querySelector('.lock-screen-date');
 lockScreenDate.innerHTML = getDate();
@@ -738,8 +738,8 @@ footerDescriptionA.innerHTML = 'I invite you to join me on my social media journ
       const message = 
       `      ${userInputtedData.ServiceType} for ${userInputtedData.userName} 
       Client Name: ${userInputtedData.userName}
-      Client Phone Number:${userInputtedData.userNumber}
-      Service Name:${userInputtedData.serviceType}
+      Client Phone Number: ${userInputtedData.userNumber}
+      Service Name: ${userInputtedData.ServiceType}
       Amount of Visitors: ${userInputtedData.numberOfPeople}
       Family Check: ${userInputtedData.FMAnswer}
       Number of Nights: ${userInputtedData.numberOfNights}
@@ -773,9 +773,6 @@ footerDescriptionA.innerHTML = 'I invite you to join me on my social media journ
   if (!userInputtedData.userName == "" && !userInputtedData.userNumber == ""){
     sendMessage();
   };
-
-
-
 
 
 
