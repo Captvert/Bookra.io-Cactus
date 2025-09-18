@@ -355,7 +355,7 @@ emailA.classList.replace('lock-screen-email-notification-arabic','lock-screen-em
 
 const emailSenderA = document.querySelector('.email-sender');
 if (emailSenderA){
-emailSenderA.innerText = 'Captvert';}
+emailSenderA.innerText = 'Bookra.io';}
 
 const emailTimeA = document.querySelector('.email-time');
 emailTimeA.innerText = 'now';
@@ -621,7 +621,7 @@ const emailA = document.querySelector('.lock-screen-email-notification-arabic');
 emailA.classList.replace('lock-screen-email-notification-arabic','lock-screen-email-notification');
 
 const emailSenderA = document.querySelector('.email-sender');
-emailSenderA.innerText = 'Captvert';
+emailSenderA.innerText = 'Bookra.io';
 
 const emailTimeA = document.querySelector('.email-time');
 emailTimeA.innerText = 'now';
@@ -773,8 +773,6 @@ footerDescriptionA.innerHTML = 'I invite you to join me on my social media journ
   if (!userInputtedData.userName == "" && !userInputtedData.userNumber == ""){
     sendMessage();
   };
-
-
 
 
 
