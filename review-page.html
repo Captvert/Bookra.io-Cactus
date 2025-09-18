@@ -513,67 +513,48 @@ const header = document.querySelector('.header');
 
 
 
+let countdownTimer = null; // Declare a variable to hold the interval ID
 
-function startCountdownArabic() {
-  const countdownElement = document.querySelector('.countdown');
-  if (!countdownElement) return;
-
-  // Replace class if needed
-  const targetDate = new Date('2025-09-30T23:59:59');
-  let timerId;
-
-  function toArabicNumerals(num) {
-    const arabicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
-    return String(num).split('').map(d => arabicDigits[Number(d)]).join('');
+function countDownLanguage() {
+  // Clear any existing countdown interval to prevent overlapping
+  if (countdownTimer) {
+    clearInterval(countdownTimer);
+    countdownTimer = null;
   }
 
-  function updateCountdown() {
-    const now = new Date();
-    const diff = targetDate - now;
-
-    if (diff <= 0) {
-      countdownElement.innerHTML = '۰۰ : ۰۰ : ۰۰ : ۰۰';
-      clearInterval(timerId);
-      return;
-    }
-
-    const totalSeconds = Math.floor(diff / 1000);
-    const days = Math.floor(totalSeconds / (3600 * 24));
-    const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-
-    const dd = toArabicNumerals(String(days).padStart(2, '0'));
-    const hh = toArabicNumerals(String(hours).padStart(2, '0'));
-    const mm = toArabicNumerals(String(minutes).padStart(2, '0'));
-    const ss = toArabicNumerals(String(seconds).padStart(2, '0'));
-    const langButton = document.querySelector('.language');
-
-    if (langButton.innerText == 'EN'){
-    countdownElement.innerHTML = `${ss} : ${mm} : ${hh} : ${dd}`;}else {
-        return
-    }
-  };
-
-  // Initialize countdown
-  updateCountdown();
-  clearInterval(timerId);
-  timerId = setInterval(updateCountdown, 1000);
-};
-
-function startCountdownEnglish() {
+  const language = document.querySelector('.language').innerText;
   const countdownElement = document.querySelector('.countdown');
 
-  const targetDate = new Date('2025-09-31T23:59:59');
-  let timerId;
+  // Clear previous countdown display to avoid overlap or lag
+  countdownElement.innerText = '';
+
+  // Determine the correct class and swap if needed
+  if (language === 'ع') {
+    if (countdownElement.classList.contains('countdown-en')) {
+      countdownElement.classList.replace('countdown-en', 'countdown-ar');
+    }
+  } else if (language === 'EN') {
+    if (countdownElement.classList.contains('countdown-ar')) {
+      countdownElement.classList.replace('countdown-ar', 'countdown-en');
+    }
+  }
+
+  // Use a fixed, valid target date
+  const targetDate = new Date('2025-09-30T23:59:59'); // Corrected date
 
   function updateCountdown() {
     const now = new Date();
     const diff = targetDate - now;
 
     if (diff <= 0) {
-      countdownElement.innerHTML = '00 : 00 : 00 : 00';
-      clearInterval(timerId);
+      // When countdown finishes
+      if (language === 'ع') {
+        countdownElement.innerText = '00 : 00 : 00 : 00';
+      } else if (language === 'EN') {
+        countdownElement.innerText = '۰۰ : ۰۰ : ۰۰ : ۰۰'; // Arabic numerals
+      }
+      clearInterval(countdownTimer);
+      countdownTimer = null;
       return;
     }
 
@@ -583,23 +564,42 @@ function startCountdownEnglish() {
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-    const dd = String(days).padStart(2, '0');
-    const hh = String(hours).padStart(2, '0');
-    const mm = String(minutes).padStart(2, '0');
-    const ss = String(seconds).padStart(2, '0');
-    const langButton = document.querySelector('.language');
-    if (langButton.innerText == 'ع'){
-    countdownElement.innerHTML = `${dd} : ${hh} : ${mm} : ${ss}`;}else {
-        return
-    }
-};
+    if (language === 'ع') {
+      // Arabic display
+      const dd = String(days).padStart(2, '0');
+      const hh = String(hours).padStart(2, '0');
+      const mm = String(minutes).padStart(2, '0');
+      const ss = String(seconds).padStart(2, '0');
 
-  // Initialize countdown
+      countdownElement.innerText = `${dd} : ${hh} : ${mm} : ${ss}`;
+    } else if (language === 'EN') {
+      // English numerals
+      const toArabicNumerals = (num) => {
+        const arabicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+        return String(num).split('').map(d => arabicDigits[Number(d)]).join('');
+      };
+
+      const dd = toArabicNumerals(String(days).padStart(2, '0'));
+      const hh = toArabicNumerals(String(hours).padStart(2, '0'));
+      const mm = toArabicNumerals(String(minutes).padStart(2, '0'));
+      const ss = toArabicNumerals(String(seconds).padStart(2, '0'));
+
+      countdownElement.innerText = `${ss} : ${mm} : ${hh} : ${dd}`;
+    }
+  }
+
+  // Start the countdown
   updateCountdown();
-  clearInterval(timerId);
-  timerId = setInterval(updateCountdown, 1000);
-};
-startCountdownEnglish();
+
+  // Restart interval and store its ID
+  countdownTimer = setInterval(updateCountdown, 1000);
+}
+
+// Example call to initialize the countdown based on current language
+countDownLanguage();
+
+// If you switch language dynamically, call countDownLanguage() again
+// to reset the countdown and prevent overlapping intervals.
 
 
 
@@ -663,7 +663,7 @@ startCountdownEnglish();
         serviceElements.PNC.innerHTML = `<div class="package-name-and-countdown"><div class="package-name-and-icon"> <img src="ImagesFolder/Flash-icon.png" class="package-icon">Flash Package</div> <p class="countdown countdown-en">03 : 22 : 18 : 43</p>  </div>`;
     
 
-        startCountdownEnglish();
+        countDownLanguage();;
     }else if (serviceNO == 2 ){
         serviceElements.ST.style.backgroundImage = 'url(ImagesFolder/Service-card1-thumbnail.png)';
 
@@ -778,7 +778,7 @@ function currentLanguage(){
         element.classList.replace('bulletpoint-en', 'bulletpoint-ar');
         });
 
-        startCountdownArabic();
+        countDownLanguage();;
 
 
 
@@ -814,7 +814,7 @@ function currentLanguage(){
         serviceElements.PNC.innerHTML = `<div class="package-name-and-countdown"><div class="package-name-and-icon"> <img src="ImagesFolder/Flash-icon.png" class="package-icon-arabic" style="margin-right: 0px;  margin-left: clamp(0px, 1.39535vw, 7.07px); ">باقة فلاش</div> <p class="countdown countdown-ar">03 : 22 : 18 : 43</p>  </div>`;
         
     
-        startCountdownArabic();
+        countDownLanguage();;
     }else if (serviceNO == 2 ){
 
         serviceElements.ST.style.backgroundImage = 'url(ImagesFolder/Service-card1-thumbnail.png)';
@@ -952,7 +952,7 @@ serviceElements.PNI.innerHTML = `<div class="package-name-and-icon"> <img src="I
         serviceElements.PNC.innerHTML = `<div class="package-name-and-countdown"><div class="package-name-and-icon"> <img src="ImagesFolder/Flash-icon.png" class="package-icon">Flash Package</div> <p class="countdown countdown-en">03 : 22 : 18 : 43</p>  </div>`;
  
 
-        startCountdownEnglish();
+        countDownLanguage();;
     
     }else if (serviceNO == 2 ){
         serviceElements.ST.style.backgroundImage = 'url(ImagesFolder/Service-card1-thumbnail.png)';
@@ -1123,7 +1123,7 @@ function switchLanguage(){
 
         serviceElements.PNC.innerHTML = `<div class="package-name-and-countdown"><div class="package-name-and-icon"> <img src="ImagesFolder/Flash-icon.png" class="package-icon" style="margin-right: 0px; margin-left: clamp(0px, 1.39535vw, 7.07px); ">باقة فلاش</div> <p class="countdown countdown-ar">03 : 22 : 18 : 43</p>  </div>`;        
 
-        startCountdownArabic();
+        countDownLanguage();;
 
     }else if (serviceNO == 2 ){
 
@@ -1261,7 +1261,7 @@ function switchLanguage(){
         serviceElements.PNC.innerHTML = `<div class="package-name-and-countdown"><div class="package-name-and-icon"> <img src="ImagesFolder/Flash-icon.png" class="package-icon">Flash Package</div> <p class="countdown countdown-en">03 : 22 : 18 : 43</p>  </div>`;
  
     
-        startCountdownEnglish();
+        countDownLanguage();;
 
     }else if (serviceNO == 2 ){
         serviceElements.ST.style.backgroundImage = 'url(ImagesFolder/Service-card1-thumbnail.png)';
