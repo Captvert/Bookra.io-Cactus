@@ -42,113 +42,96 @@ toggleUnderline.style.marginLeft = `${xCoordinate - (containerXCoordinates)}px`;
 toggleUnderline.style.width = width;
 
 
-alert(document.querySelector('.language').innerText)
-
-function countDownLanguage(){
-if (document.querySelector('.language').innerText == 'ع'){
-// Select the element with class 'countdown'
-const countdownElement = document.querySelector('.countdown');
-if (countdownElement.classList.contains('countdown-ar')){
-    countdownElement.classList.replace('countdown-ar', 'countdown-en')
-};
 
 
-// Set the target date to the end of July 2025
-const targetDate = new Date('2025-09-31T23:59:59');
+let countdownTimer = null; // Declare a variable to hold the interval ID
 
-function updateCountdown() {
-  const now = new Date();
-  const diff = targetDate - now;
-
-  if (diff <= 0) {
-    // If the countdown is finished
-    countdownElement.innerHTML = '00 : 00 : 00 : 00';
-    return;
+function countDownLanguage() {
+  // Clear any existing countdown interval to prevent overlapping
+  if (countdownTimer) {
+    clearInterval(countdownTimer);
+    countdownTimer = null;
   }
 
-  // Calculate days, hours, minutes, seconds
-  const totalSeconds = Math.floor(diff / 1000);
-  const days = Math.floor(totalSeconds / (3600 * 24));
-  const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
+  const language = document.querySelector('.language').innerText;
+  const countdownElement = document.querySelector('.countdown');
 
-  // Format with leading zeros
-  const dd = String(days).padStart(2, '0');
-  const hh = String(hours).padStart(2, '0');
-  const mm = String(minutes).padStart(2, '0');
-  const ss = String(seconds).padStart(2, '0');
+  // Clear previous countdown display to avoid overlap or lag
+  countdownElement.innerText = '';
 
-
-  
-
-  const countdownEN = document.querySelector('.countdown-en');
-  // Update the countdown display
-  countdownEN.innerHTML = `${dd} : ${hh} : ${mm} : ${ss}`;
-}
-
-// Initial call to display the countdown immediately
-updateCountdown();
-
-// Update every second
-const timer = setInterval(updateCountdown, 1000);
-
-}else if (document.querySelector('.language').innerText == 'EN'){
-    const countdownElement = document.querySelector('.countdown');
-
-    if (countdownElement.classList.contains('countdown-en')){
-    countdownElement.classList.replace('countdown-en', 'countdown-ar')
-};
-
-
-// Set the target date to the end of July 2025
-const targetDate = new Date('2025-09-31T23:59:59');
-
-function updateCountdown() {
-  const now = new Date();
-  const diff = targetDate - now;
-
-  if (diff <= 0) {
-    // If the countdown is finished
-    countdownElement.innerHTML = '۰۰ : ۰۰ : ۰۰ : ۰۰'; // Arabic numerals for zero
-    clearInterval(timer);
-    return;
+  // Determine the correct class and swap if needed
+  if (language === 'ع') {
+    if (countdownElement.classList.contains('countdown-en')) {
+      countdownElement.classList.replace('countdown-en', 'countdown-ar');
+    }
+  } else if (language === 'EN') {
+    if (countdownElement.classList.contains('countdown-ar')) {
+      countdownElement.classList.replace('countdown-ar', 'countdown-en');
+    }
   }
 
-  // Calculate days, hours, minutes, seconds
-  const totalSeconds = Math.floor(diff / 1000);
-  const days = Math.floor(totalSeconds / (3600 * 24));
-  const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
+  // Use a fixed, valid target date
+  const targetDate = new Date('2025-09-30T23:59:59'); // Corrected date
 
-  // Function to convert Western digits to Arabic-Indic digits
-  const toArabicNumerals = (num) => {
-    const arabicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
-    return String(num).split('').map(digit => arabicDigits[Number(digit)]).join('');
-  };
+  function updateCountdown() {
+    const now = new Date();
+    const diff = targetDate - now;
 
-  // Format with leading zeros
-  const dd = toArabicNumerals(String(days).padStart(2, '0'));
-  const hh = toArabicNumerals(String(hours).padStart(2, '0'));
-  const mm = toArabicNumerals(String(minutes).padStart(2, '0'));
-  const ss = toArabicNumerals(String(seconds).padStart(2, '0'));
+    if (diff <= 0) {
+      // When countdown finishes
+      if (language === 'ع') {
+        countdownElement.innerText = '00 : 00 : 00 : 00';
+      } else if (language === 'EN') {
+        countdownElement.innerText = '۰۰ : ۰۰ : ۰۰ : ۰۰'; // Arabic numerals
+      }
+      clearInterval(countdownTimer);
+      countdownTimer = null;
+      return;
+    }
 
+    const totalSeconds = Math.floor(diff / 1000);
+    const days = Math.floor(totalSeconds / (3600 * 24));
+    const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
 
-  const countdownA = document.querySelector('.countdown-ar');
-  // Update the countdown display
-  countdownA.innerHTML = `${ss} : ${mm} : ${hh} : ${dd}`;
+    if (language === 'ع') {
+      // Arabic display
+      const dd = String(days).padStart(2, '0');
+      const hh = String(hours).padStart(2, '0');
+      const mm = String(minutes).padStart(2, '0');
+      const ss = String(seconds).padStart(2, '0');
+
+      countdownElement.innerText = `${dd} : ${hh} : ${mm} : ${ss}`;
+    } else if (language === 'EN') {
+      // English numerals
+      const toArabicNumerals = (num) => {
+        const arabicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+        return String(num).split('').map(d => arabicDigits[Number(d)]).join('');
+      };
+
+      const dd = toArabicNumerals(String(days).padStart(2, '0'));
+      const hh = toArabicNumerals(String(hours).padStart(2, '0'));
+      const mm = toArabicNumerals(String(minutes).padStart(2, '0'));
+      const ss = toArabicNumerals(String(seconds).padStart(2, '0'));
+
+      countdownElement.innerText = `${ss} : ${mm} : ${hh} : ${dd}`;
+    }
+  }
+
+  // Start the countdown
+  updateCountdown();
+
+  // Restart interval and store its ID
+  countdownTimer = setInterval(updateCountdown, 1000);
 }
 
-    // Initial call to display the countdown immediately
-    updateCountdown();
-
-    // Update every second
-    const timer = setInterval(updateCountdown, 1000);
-}
-};
-
+// Example call to initialize the countdown based on current language
 countDownLanguage();
+
+// If you switch language dynamically, call countDownLanguage() again
+// to reset the countdown and prevent overlapping intervals.
+
 
 console.log(document.querySelector('.language').innerHTML);
 
@@ -298,7 +281,7 @@ function currentLanguage(){
         timeText.innerText = 'حجوزات سبتمبر';
 
         countDownLanguage();
-
+        
         const currentPrice = document.querySelector('.current-price');
         currentPrice.innerText = '290';
 
@@ -573,7 +556,7 @@ function currentLanguage(){
         footerDescriptionA.innerHTML = 'من خلال هذا الزر ستبدأ بالخطوى الأولى . إنضم لبدايات أغسطس!';
         footerDescriptionA.classList.add('arabic-text');
 
-        countDownLanguage();
+        
 
         const footerCTADIV = document.querySelector('.footer-cta');
         const footerCTA = footerCTADIV.querySelector('.black-cta-modified');
@@ -677,8 +660,7 @@ function currentLanguage(){
         const timeText = document.querySelector('.time-text');
         timeText.innerText = 'September Bookings';
 
-        countDownLanguage();
-
+        
         const currentPrice = document.querySelector('.current-price');
         currentPrice.innerText = '290';
 
@@ -771,7 +753,7 @@ function currentLanguage(){
         serviceCard2Description.classList.add('service-card2-description');
         serviceCard2Description.innerHTML = 'Get a feel of the chalet';}
 
-        
+        countDownLanguage();
 
         const canvasItemsContainer = document.querySelector('.canvas-items-container-arabic');
         if (canvasItemsContainer){
@@ -999,7 +981,7 @@ function currentLanguage(){
         footerDescriptionA.innerHTML = "This button below will start you on the first step. Join the Early August Bookings!";
         footerDescriptionA.classList.remove('arabic-text');
 
-        countDownLanguage();
+        
 
         const footerCTADIV = document.querySelector('.footer-cta');
         const footerCTA = footerCTADIV.querySelector('.black-cta-modified');
@@ -1430,8 +1412,7 @@ function switchLanguage(){
         footerDescriptionA.innerHTML = 'من خلال هذا الزر ستبدأ بالخطوى الأولى . إنضم لبدايات أغسطس!';
         footerDescriptionA.classList.add('arabic-text');
 
-        countDownLanguage();
-
+        
         const footerCTADIV = document.querySelector('.footer-cta');
         const footerCTA = footerCTADIV.querySelector('.black-cta-modified');
 
@@ -1845,7 +1826,7 @@ function switchLanguage(){
         footerDescriptionA.innerHTML = "This button below will start you on the first step. Join the Early August Bookings!";
         footerDescriptionA.classList.remove('arabic-text');
 
-        countDownLanguage();
+        
 
         const footerCTADIV = document.querySelector('.footer-cta');
         const footerCTA = footerCTADIV.querySelector('.black-cta-modified');
@@ -2355,6 +2336,15 @@ function someConditionIsTrue() {
 // Example usage (assuming someVariable is a global variable)
 let oldValue = 0;
 let someVariable = 1;
+
+
+
+
+
+
+
+
+
 
 
 
