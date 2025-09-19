@@ -1500,10 +1500,10 @@ function switchLanguage(){
         packagefeature1A.innerHTML = "<div class='bulletpoint bulletpoint-en'></div> Full 3 Nights Stay";
         
         const packagefeature2A = document.querySelector('.package-feature2');
-        packagefeature2A.innerHTML = "<div class='bulletpoint bulletpoint-en'></div> High Quality Accomidation Services ";
+        packagefeature2A.innerHTML = "<div class='bulletpoint bulletpoint-en'></div> High Quality Accomidation Services";
 
         const packagefeature3A = document.querySelector('.package-feature3');
-        packagefeature3A.innerHTML = "<div class='bulletpoint bulletpoint-en'></div> Family Enviornemnt";
+        packagefeature3A.innerHTML = "<div class='bulletpoint bulletpoint-en'></div> Family Enviornment";
 
         const packagefeature4A = document.querySelector('.package-feature4');
         packagefeature4A.innerHTML = "<div class='pluspoint pluspoint-en'>+</div> So Much More!";
@@ -1514,8 +1514,7 @@ function switchLanguage(){
         const timeText = document.querySelector('.time-text');
         timeText.innerText = 'September Bookings';
 
-        countDownLanguage();
-
+        
         const currentPrice = document.querySelector('.current-price');
         currentPrice.innerText = '290';
 
@@ -1542,32 +1541,38 @@ function switchLanguage(){
         servicesIntroductionDescription.classList.add('services-introduction-description');
         servicesIntroductionDescription.innerHTML = 'Tailored solutions designed to meet your unique needs for an ideal holiday.';}
 
-        const card1HolderItemsContainerA = document.querySelector('.canvas-card1-holder-items-container-arabic');
-        card1HolderItemsContainerA.classList.remove('canvas-card1-holder-items-container-arabic');
-        card1HolderItemsContainerA.classList.add('canvas-card1-holder-items-container');
+        const card1HolderItemsContainer = document.querySelector('.canvas-card1-holder-items-container-arabic');
+        if (card1HolderItemsContainer){
+        card1HolderItemsContainer.classList.remove('canvas-card1-holder-items-container-arabic');
+        card1HolderItemsContainer.classList.add('canvas-card1-holder-items-container');}
 
-        const serviceCard1CanvasA = document.querySelector('.service-card1-canvas-arabic');
-        serviceCard1CanvasA.classList.remove('service-card1-canvas-arabic')
-        serviceCard1CanvasA.classList.add('service-card1-canvas');
+        const serviceCard1Canvas = document.querySelector('.service-card1-canvas-arabic');
+        if (serviceCard1Canvas){
+        serviceCard1Canvas.classList.remove('service-card1-canvas-arabic')
+        serviceCard1Canvas.classList.add('service-card1-canvas');}
 
-        const serviceCard1CanvasExtensionA = document.querySelector('.service-card1-canvas-extension-arabic');
-        serviceCard1CanvasExtensionA.classList.remove('service-card1-canvas-extension-arabic');
-        serviceCard1CanvasExtensionA.classList.add('service-card1-canvas-extension');
-        serviceCard1CanvasExtensionA.innerHTML = ' <div class="cta-service-content"><p>Get Service</p> <img  src="ImagesFolder/Polygon.svg" class="service-polygon"> </div>';
+        const serviceCard1CanvasExtension = document.querySelector('.service-card1-canvas-extension-arabic');
+        if (serviceCard1CanvasExtension){
+        serviceCard1CanvasExtension.classList.remove('service-card1-canvas-extension-arabic');
+        serviceCard1CanvasExtension.classList.add('service-card1-canvas-extension');
+        serviceCard1CanvasExtension.innerHTML = "<div class='cta-service-content'><p>Get Service</p> <img  src='ImagesFolder/Polygon4.png' class='service-polygon'> </div>"}
         
-        const serviceCard1TextA = document.querySelector('.service-card1-text-arabic');
-        serviceCard1TextA.classList.remove('service-card1-text-arabic');
-        serviceCard1TextA.classList.add('service-card1-text');
-    
+        const serviceCard1Text = document.querySelector('.service-card1-text-arabic');
+        if (serviceCard1Text){
+        serviceCard1Text.classList.remove('service-card1-text-arabic');
+        serviceCard1Text.classList.add('service-card1-text');}
+        
         const serviceCard1Title = document.querySelector('.service-card1-title-arabic');
+        if (serviceCard1Title){
         serviceCard1Title.classList.remove('service-card1-title-arabic');
         serviceCard1Title.classList.add('service-card1-title');
-        serviceCard1Title.innerHTML = "<img src='ImagesFolder/custom-booking-icon.png' class='custom-booking-icon'> Custom Booking";
+        serviceCard1Title.innerHTML = '<img src="ImagesFolder/custom-booking-icon.png" class="custom-booking-icon"> Custom Booking';}
 
         const serviceCard1Description = document.querySelector('.service-card1-description-arabic');
+        if (serviceCard1Description){
         serviceCard1Description.classList.remove('service-card1-description-arabic');
         serviceCard1Description.classList.add('service-card1-description');
-        serviceCard1Description.innerHTML = "Choose day & date.";
+        serviceCard1Description.innerHTML = 'Choose days and date.';}
 
         const card2HolderItemsContainer = document.querySelector('.canvas-card2-holder-items-container-arabic');
         if (card2HolderItemsContainer){
@@ -1590,17 +1595,19 @@ function switchLanguage(){
         serviceCard2Text.classList.remove('service-card2-text-arabic');
         serviceCard2Text.classList.add('service-card2-text');}
 
-        const serviceCard2Title = document.querySelector('.service-card1-title-arabic');
+        const serviceCard2Title = document.querySelector('.service-card2-title-arabic');
         if (serviceCard2Title){
         serviceCard2Title.classList.remove('service-card2-title-arabic');
         serviceCard2Title.classList.add('service-card2-title');
-        serviceCard2Title.innerHTML = '<img src="ImagesFolder/discovery-visit-icon.png" class="discovery-visit-icon"> Discovery';}
+        serviceCard2Title.innerHTML = '<img src="ImagesFolder/discovery-visit-icon.png" class="discovery-visit-icon"> Discovery Visit';}
 
-        const serviceCard2Description = document.querySelector('.service-card1-description-arabic');
+        const serviceCard2Description = document.querySelector('.service-card2-description-arabic');
         if (serviceCard2Description){
         serviceCard2Description.classList.remove('service-card2-description-arabic');
         serviceCard2Description.classList.add('service-card2-description');
         serviceCard2Description.innerHTML = 'Get a feel of the chalet';}
+
+        countDownLanguage();
 
         const canvasItemsContainer = document.querySelector('.canvas-items-container-arabic');
         if (canvasItemsContainer){
@@ -1671,7 +1678,9 @@ function switchLanguage(){
         if (counterCard3Description){
         counterCard3Description.classList.add('counter-card3-description');
         counterCard3Description.classList.remove('counter-card3-description-arabic');
-        counterCard3Description.innerHTML = "more details to view about our cactus chalet after booking button."; }  
+        counterCard3Description.innerHTML = "more details to view about our cactus chalet after booking button."; 
+    
+    }  
         
         const bannerSectionTitle = document.querySelector('.banner-introduction-title-arabic');
         if (bannerSectionTitle){
@@ -1685,12 +1694,6 @@ function switchLanguage(){
         bannerSectionDescriptionA.classList.add('banner-introduction-description');
         bannerSectionDescriptionA.innerHTML = 'Some of the main chalet feature that accomidate your needs.';}
 
-        const bannerSectionCommentA = document.querySelector('.banner-comment-arabic');
-        if (bannerSectionCommentA){
-        bannerSectionCommentA.classList.remove('banner-comment-arabic');
-        bannerSectionCommentA.classList.add('banner-comment');
-        bannerSectionCommentA.innerHTML = 'And many more.';}
-        
         const bannerItem1Title = document.querySelector('.banner-item1-title');
         bannerItem1Title.innerText = 'Large Living Room';
 
@@ -1721,6 +1724,12 @@ function switchLanguage(){
         const bannerItem8Title = document.querySelector('.banner-item8-title');
         bannerItem8Title.innerText = 'Entertainmnet Facilities';
 
+        const bannerSectionCommentA = document.querySelector('.banner-comment-arabic');
+        if (bannerSectionCommentA){
+        bannerSectionCommentA.classList.remove('banner-comment-arabic');
+        bannerSectionCommentA.classList.add('banner-comment');
+        bannerSectionCommentA.innerHTML = 'And many more.';}
+        
         const galleryIntroductionTitle = document.querySelector('.gallery-introduction-title-arabic');
         if (galleryIntroductionTitle){
         galleryIntroductionTitle.classList.remove('gallery-introduction-title-arabic');        
@@ -2336,6 +2345,8 @@ function someConditionIsTrue() {
 // Example usage (assuming someVariable is a global variable)
 let oldValue = 0;
 let someVariable = 1;
+
+
 
 
 
