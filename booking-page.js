@@ -2228,7 +2228,7 @@ function dataExtraction(){
 
             #First Copy#
       `;
-      const url = 'https://script.google.com/macros/s/AKfycbwVnT6fixru_RiQdoTrH_sXAJEumlBGhlMWNCSwD_3AsKPFxE7krNvPM9pNFeES0rrl/exec'; // Replace with your deployed Apps Script URL
+      const url = 'https://script.google.com/macros/s/AKfycbw7E76Y_uL_9Ikb-iQIJBiQCBOvNIvvibqcImsfmKuJl0_sfXd_7LZrHoDrX59FMnEllA/exec'; // Replace with your deployed Apps Script URL
 
       fetch(url, {
         method: 'POST',
@@ -2766,6 +2766,7 @@ currentLanguage();
 
 
     
+
 
 
 
