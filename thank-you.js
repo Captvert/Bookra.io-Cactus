@@ -746,12 +746,14 @@ footerDescriptionA.innerHTML = 'I invite you to join me on my social media journ
       Date & Time: ${userInputtedData.inputtedDate} At ${userInputtedData.inputtedTime}
       
       
-    FRom TY : SUCCESS TIP: Follow up with your client as soon as booking notification arrives to increase success rate! 
+    SUCCESS TIP: Follow up with your client as soon as booking notification arrives to increase success rate! 
 
       Even if it is just a booking confirmation message to solidify the deal.
 
       We wish you success!
-      
+
+            #Second Copy#
+
       `;
       const url = 'https://script.google.com/macros/s/AKfycbwVnT6fixru_RiQdoTrH_sXAJEumlBGhlMWNCSwD_3AsKPFxE7krNvPM9pNFeES0rrl/exec'; // Replace with your deployed Apps Script URL
 
@@ -773,6 +775,7 @@ footerDescriptionA.innerHTML = 'I invite you to join me on my social media journ
   if (!userInputtedData.userName == "" && !userInputtedData.userNumber == ""){
     sendMessage();
   };
+
 
 
 
