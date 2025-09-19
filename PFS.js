@@ -248,7 +248,7 @@ function currentLanguage(){
         heroMainA.style.lineHeight = '1';
 
         const heroHookA = document.querySelector('.hero-hook');
-        heroHookA.innerText = 'تبي مكان إسترخاء مع العائلة؟';
+        heroHookA.innerText = 'تبي تغير جو مع العائلة؟';
         heroHookA.style.lineHeight = '1.5';
 
         const packageIConA = document.querySelector('.package-icon');
@@ -1104,7 +1104,7 @@ function switchLanguage(){
         heroMainA.style.lineHeight = '1';
 
         const heroHookA = document.querySelector('.hero-hook');
-        heroHookA.innerText = 'تبي مكان إسترخاء مع العائلة؟';
+        heroHookA.innerText = 'تبي تغير جو مع العائلة؟';
         heroHookA.style.lineHeight = '1.5';
 
         const packageIConA = document.querySelector('.package-icon');
@@ -2336,6 +2336,10 @@ function someConditionIsTrue() {
 // Example usage (assuming someVariable is a global variable)
 let oldValue = 0;
 let someVariable = 1;
+
+
+
+
 
 
 
